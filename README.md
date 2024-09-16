@@ -25,13 +25,13 @@ Setup Instructions
   - Prometheus for scraping metrics from StatsD (available at http://localhost:9092)
   - Grafana for visualizing metrics (available at http://localhost:3000)
 
-2. Accessing the Services
+### 2. Accessing the Services
 
   - Airflow Webserver: http://localhost:8081 (Default login: admin / airflow)
   - Prometheus Dashboard: http://localhost:9092
   - Grafana Dashboard: http://localhost:3000 (Default login: admin / grafana)
 
-3. Airflow Configuration
+### 3. Airflow Configuration
 
   In the provided setup, the Airflow instance is pre-configured to use StatsD for emitting metrics. The StatsD configuration in airflow.cfg ensures that metrics are captured and passed to the StatsD Exporter.
 
@@ -48,7 +48,7 @@ Setup Instructions
             labels:
               airflow_id: 'airflow'
 
-4. Prometheus Configuration
+### 4. Prometheus Configuration
 
   The prometheus/prometheus.yaml file is pre-configured to scrape metrics from the StatsD Exporter at http://localhost:9102.
 
@@ -60,7 +60,7 @@ Setup Instructions
       - targets: ['statsd-exporter:9102']
 
 
-5. Grafana Configuration
+### 5. Grafana Configuration
 
    Grafana is pre-configured to use Prometheus as a data source and comes with a Grafana dashboard to visualize Airflow metrics like DAG run times, task failures, and system performance.
 
@@ -70,7 +70,7 @@ Setup Instructions
   - Add Prometheus as a data source using the URL http://prometheus:9090.
   - Import the provided Grafana dashboard JSON (if included) to visualize Airflow metrics.
 
-6. MySQL Configuration
+### 6. MySQL Configuration
 
   MySQL is used as the metadata database for Airflow. The configuration details are:
 
@@ -81,7 +81,7 @@ Setup Instructions
 
   MySQL is configured to initialize automatically when starting the containers and has a health check configured to ensure it's up and running before Airflow services start.
 
-7. StatsD Configuration
+### 7. StatsD Configuration
 
    The statsd.yaml file defines how StatsD metrics emitted by Airflow are mapped to specific counters, gauges, and timers. These metrics are processed by Prometheus and visualized in Grafana for real-time monitoring of Airflow's performance and health.
   Key Metrics Mapped:
