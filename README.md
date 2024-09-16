@@ -81,6 +81,33 @@ Setup Instructions
 
   MySQL is configured to initialize automatically when starting the containers and has a health check configured to ensure it's up and running before Airflow services start.
 
+7. StatsD Configuration
+
+   The statsd.yaml file defines how StatsD metrics emitted by Airflow are mapped to specific counters, gauges, and timers. These metrics are processed by Prometheus and visualized in Grafana for real-time monitoring of Airflow's performance and health.
+  Key Metrics Mapped:
+
+    Counters:
+        Job Start/End: Tracks how many times a job starts or ends.
+            Example: af_agg_job_start, af_agg_job_end
+        Operator Failures/Successes: Tracks success or failure of specific operators.
+            Example: af_agg_operator_failures, af_agg_operator_successes
+        Task Failures/Successes: Tracks task failures and successes.
+            Example: af_agg_ti_failures, af_agg_ti_successes
+
+    Gauges:
+        DAG Processing Metrics: Monitors various DAG-related metrics, such as size, import errors, and parse times.
+            Example: af_agg_dag_processing_total_parse_time, af_agg_dag_processing_last_runtime
+        Executor Slots: Tracks the number of open and running slots in Airflow's executor.
+            Example: af_agg_executor_running_tasks, af_agg_executor_open_slots
+
+    Timers:
+        DAG Task Duration: Measures the time taken for each DAG task to complete.
+            Example: af_agg_dag_task_duration
+        DAG Run Duration: Tracks the total time for a DAG run to succeed or fail.
+            Example: af_agg_dagrun_duration_success, af_agg_dagrun_duration_failed
+
+    Custom Counter:
+        A custom metric my_custom_task_counter tracks custom task increments in DAGs like my_dag (defined in the Airflow DAG).
 
 
 
