@@ -151,24 +151,24 @@ This project provides a complete monitoring system for Apache Airflow using Stat
 To monitor the health and performance of Apache Airflow, a Grafana dashboard has been created with real-time metrics. The dashboard offers an in-depth view of Airflow's workflow metrics and system performance. Key metrics captured on the dashboard include:
 
   Scheduler Metrics:
-      - Scheduler Heartbeat: Displays the frequency of heartbeats from the scheduler, ensuring it is alive and managing the workflows.
-      - Dagbag Size: Tracks the total number of DAGs (Directed Acyclic Graphs) loaded into Airflow for execution.
-      - DAG Processing Total Parse Time: Measures the time taken to process and parse DAGs, helping to track performance bottlenecks.
-      - Dagbag Import Errors: Provides a count of any import errors that occur while processing DAGs.
-      - Zombies Killed: Displays the number of zombie tasks (stuck or unresponsive) that the scheduler has identified and killed.
+    - Scheduler Heartbeat: Displays the frequency of heartbeats from the scheduler, ensuring it is alive and managing the workflows.
+    - Dagbag Size: Tracks the total number of DAGs (Directed Acyclic Graphs) loaded into Airflow for execution.
+    - DAG Processing Total Parse Time: Measures the time taken to process and parse DAGs, helping to track performance bottlenecks.
+    - Dagbag Import Errors: Provides a count of any import errors that occur while processing DAGs.
+    - Zombies Killed: Displays the number of zombie tasks (stuck or unresponsive) that the scheduler has identified and killed.
 
   Task Metrics:
-      - Total Successful Tasks: A counter that tracks the total number of tasks successfully executed within the defined time period.
-      - Operator Success Rate Per Minute: Shows the success rate of task operators in real-time, updated every minute.
-      - Operator Failure Rate Per Minute: Measures how many tasks fail within the minute, helping to track issues in real-time.
-      - Total Failed Tasks: Tracks the cumulative count of failed tasks during DAG execution.
+    - Total Successful Tasks: A counter that tracks the total number of tasks successfully executed within the defined time period.
+    - Operator Success Rate Per Minute: Shows the success rate of task operators in real-time, updated every minute.
+    - Operator Failure Rate Per Minute: Measures how many tasks fail within the minute, helping to track issues in real-time.
+    - Total Failed Tasks: Tracks the cumulative count of failed tasks during DAG execution.
 
   Executor Pool Metrics:
-      - Jobs Started/Ended Per Minute: Monitors how frequently tasks/jobs are initiated or completed per minute, giving a clear overview of task throughput.
-      - Executor Open Slots: Indicates available task execution slots in the Airflow Executor, ensuring there is capacity to process tasks.
-      - Executor Queued Tasks: Shows the number of tasks currently waiting in the queue for execution.
-      - Executor Running Tasks: Tracks how many tasks are actively being executed in real-time.
+    - Jobs Started/Ended Per Minute: Monitors how frequently tasks/jobs are initiated or completed per minute, giving a clear overview of task throughput.
+    - Executor Open Slots: Indicates available task execution slots in the Airflow Executor, ensuring there is capacity to process tasks.
+    - Executor Queued Tasks: Shows the number of tasks currently waiting in the queue for execution.
+    - Executor Running Tasks: Tracks how many tasks are actively being executed in real-time.
 
   Custom Metrics:
-      - My Custom Counter: This is a user-defined metric added to track specific performance indicators related to the DAGs or tasks. For example, tracking custom events or data processing stages that are important for the workflow.
+    - My Custom Counter: This is a user-defined metric added to track specific performance indicators related to the DAGs or tasks. For example, tracking custom events or data processing stages that are important for the workflow.
 
