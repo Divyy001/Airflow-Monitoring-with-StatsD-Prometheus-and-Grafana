@@ -3,12 +3,46 @@
 ## Project Overview
 
 This project provides a complete monitoring system for Apache Airflow using StatsD, Prometheus, and Grafana. It leverages Docker Compose to orchestrate services and enables tracking Airflow DAG runs, tasks, and performance metrics through Grafana dashboards, with data scraped by Prometheus and exposed by StatsD.
+
 ## Prerequisites
 
 - Docker and Docker Compose installed on your machine.
 - Basic knowledge of Airflow, monitoring tools (StatsD, Prometheus), and Grafana for visualization.
 
-Setup Instructions
+## Key Components
+
+  Apache Airflow:
+      Airflow automates, schedules, and monitors workflows (DAGs). This project captures key metrics during DAG execution, such as task counts, run times, and success/failure rates, and sends them to StatsD.
+
+  StatsD:
+      StatsD aggregates and collects real-time metrics from Airflow and forwards them to Prometheus. In this project, StatsD is configured to handle both standard Airflow metrics and custom metrics defined within DAGs.
+
+  Prometheus:
+      Prometheus scrapes metrics from StatsD, stores them, and makes them available for querying. It serves as the core metric storage and query system, allowing metrics to be analyzed and visualized by Grafana.
+
+  Grafana:
+      Grafana is used for real-time visualization of Airflow metrics. It provides an intuitive, customizable interface for viewing system performance, task execution, and workflow health.
+
+## Key Features of the Project
+
+  Real-Time Monitoring of Airflow Workflows:
+        Capture key metrics like DAG run times, task success/failure rates, and operator performance.
+        Visualize these metrics in Grafana dashboards for a comprehensive view of workflow performance.
+
+  Custom Metrics:
+        The Airflow DAGs are equipped with custom counters, allowing detailed tracking of task execution times and other custom metrics.
+        Custom metrics can be easily visualized in Grafana, alongside default Airflow metrics, to give deeper insights into workflow health.
+
+  Seamless Integration with StatsD, Prometheus, and Grafana:
+        The project uses StatsD to collect and forward metrics from Airflow.
+        Prometheus scrapes these metrics and stores them for easy querying.
+        Grafana visualizes the data, providing real-time dashboards that display everything from task-level performance to system-wide health checks.
+
+  Fully Containerized Setup:
+        The entire project is orchestrated with Docker Compose, making it easy to deploy and manage the various components.
+        All services, including Airflow, StatsD, Prometheus, and Grafana, run in containers, ensuring the system is portable and scalable.
+
+## Setup Instructions
 
 ### 1. Start the Services
 
@@ -86,27 +120,27 @@ Setup Instructions
    The statsd.yaml file defines how StatsD metrics emitted by Airflow are mapped to specific counters, gauges, and timers. These metrics are processed by Prometheus and visualized in Grafana for real-time monitoring of Airflow's performance and health.
   Key Metrics Mapped:
 
-    Counters:
-        Job Start/End: Tracks how many times a job starts or ends.
-            Example: af_agg_job_start, af_agg_job_end
-        Operator Failures/Successes: Tracks success or failure of specific operators.
-            Example: af_agg_operator_failures, af_agg_operator_successes
-        Task Failures/Successes: Tracks task failures and successes.
-            Example: af_agg_ti_failures, af_agg_ti_successes
+  Counters:
+      Job Start/End: Tracks how many times a job starts or ends.
+          Example: af_agg_job_start, af_agg_job_end
+      Operator Failures/Successes: Tracks success or failure of specific operators.
+          Example: af_agg_operator_failures, af_agg_operator_successes
+      Task Failures/Successes: Tracks task failures and successes.
+          Example: af_agg_ti_failures, af_agg_ti_successes
 
-    Gauges:
+  Gauges:
         DAG Processing Metrics: Monitors various DAG-related metrics, such as size, import errors, and parse times.
             Example: af_agg_dag_processing_total_parse_time, af_agg_dag_processing_last_runtime
         Executor Slots: Tracks the number of open and running slots in Airflow's executor.
             Example: af_agg_executor_running_tasks, af_agg_executor_open_slots
 
-    Timers:
+  Timers:
         DAG Task Duration: Measures the time taken for each DAG task to complete.
             Example: af_agg_dag_task_duration
         DAG Run Duration: Tracks the total time for a DAG run to succeed or fail.
             Example: af_agg_dagrun_duration_success, af_agg_dagrun_duration_failed
 
-    Custom Counter:
+  Custom Counter:
         A custom metric my_custom_task_counter tracks custom task increments in DAGs like my_dag (defined in the Airflow DAG).
 
 
