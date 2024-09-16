@@ -3,7 +3,7 @@
 Project Overview
 
 This project provides a complete monitoring system for Apache Airflow using StatsD, Prometheus, and Grafana. It leverages Docker Compose to orchestrate services and enables tracking Airflow DAG runs, tasks, and performance metrics through Grafana dashboards, with data scraped by Prometheus and exposed by StatsD.
-Prerequisites
+## Prerequisites
 
 - Docker and Docker Compose installed on your machine.
 - Basic knowledge of Airflow, monitoring tools (StatsD, Prometheus), and Grafana for visualization.
